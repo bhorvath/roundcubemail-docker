@@ -11,6 +11,7 @@ if [[ "$1" == apache2* ]] || [ "$1" == php-fpm ]; then
       ( set -x; ls -A; sleep 10 )
     fi
     tar cf - --one-file-system -C /usr/src/roundcubemail . | tar xf -
+    mv /tmp/carma_logo.png skins/larry/images
     echo >&2 "Complete! ROUNDCUBEMAIL has been successfully copied to $PWD"
   fi
 
