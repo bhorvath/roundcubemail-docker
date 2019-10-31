@@ -86,6 +86,9 @@ COPY php.ini /usr/local/etc/php/conf.d/roundcube-defaults.ini
 COPY logo.inc.php /var/roundcube/config
 COPY carma_logo.png /tmp
 
+# increased session timeout
+COPY session.inc.php /var/roundcube/config
+
 COPY docker-entrypoint.sh /
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
