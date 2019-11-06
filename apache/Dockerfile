@@ -76,6 +76,10 @@ RUN set -ex; \
 	mv /usr/src/roundcubemail-${ROUNDCUBEMAIL_VERSION} /usr/src/roundcubemail; \
 	rm -rf /usr/src/roundcubemail/installer
 
+# install context menu plugin
+RUN curl -L https://github.com/johndoh/roundcube-contextmenu/archive/2.3.tar.gz | \
+  tar -xz --transform 's/^roundcube-contextmenu-2.3/'contextmenu/ -C /usr/src/roundcubemail/plugins
+
 # include the wait-for-it.sh script
 RUN curl -fL https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh > /wait-for-it.sh && chmod +x /wait-for-it.sh
 
@@ -88,6 +92,9 @@ COPY carma_logo.png /tmp
 
 # increased session timeout
 COPY session.inc.php /var/roundcube/config
+
+# plugins
+COPY plugins.inc.php /var/roundcube/config
 
 COPY docker-entrypoint.sh /
 
