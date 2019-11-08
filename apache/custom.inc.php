@@ -8,3 +8,9 @@
   $config['htmleditor'] = 1;
   $config['show_images'] = 1;
   $config['check_all_folders'] = true;
+
+  $config['managesieve_host'] = 'dovecot';
+  $config['managesieve_usetls'] = true;
+  $config['managesieve_conn_options'] = array(
+    'ssl' => array('verify_peer' => true, 'verify_peer_name' => false, 'allow_self_signed' => false)
+  );
